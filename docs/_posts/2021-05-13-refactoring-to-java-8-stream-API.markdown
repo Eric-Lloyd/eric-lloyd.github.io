@@ -18,14 +18,14 @@ In this blog post, I would like to share some common patterns that I have come a
 ## Filtering
 One very common action in programming is to filter a collection of elements. To do this prior to Java 8, you would do the following:
 ```java
- List<String> longWords(final List<String> words, final int threshold) {
-     List<String> longWords = new ArrayList<>();
-     for (String word : words) {
+List<String> longWords(final List<String> words, final int threshold) {
+    List<String> longWords = new ArrayList<>();
+    for (String word : words) {
         if (word.length() > threshold) {
             longWords.add(word);
         }
-     }
-     return longWords;
+    }
+    return longWords;
 }
 ```
 The above method could be replaced with the following:
