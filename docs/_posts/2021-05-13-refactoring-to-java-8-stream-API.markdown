@@ -25,7 +25,7 @@ One very common action in programming is to filter a collection of elements. To 
             longWords.add(word);
         }
      }
-    return longWords;
+     return longWords;
 }
 ```
 The above method could be replaced with the following:
