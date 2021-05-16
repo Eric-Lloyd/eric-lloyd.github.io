@@ -7,7 +7,7 @@ categories: java
 
 You may be wondering why a blog post in 2021 is mentioning Java 8, as it came out over 7 years ago. 
 The reason is that I have come across a lot of Java codebase which are indeed using Java 8 or  a later version, however they are not always leveraging the Java 8 API.
-I often find code blocks which could be _refactored_. What I mean here by _refactoring_ is that these code blocks could leverage the Java 8 APIs to become more readable, more concise (.i.e less verbose) and also less outdated.
+I often find code blocks which could be _refactored_. What I mean here by _refactoring_ is that these code blocks could leverage the Java 8 APIs to become more readable, more concise (i.e. less verbose) and also less outdated.
 
 I have found that doing this kind of very small refactoring is a good way to get familiar with an unknown codebase — which you can do while reading through the code.
 Always make sure that there is a good suite of tests for the code you are refactoring, and to regularly run them every time you make changes.
@@ -24,7 +24,7 @@ One very common action in programming is to filter a collection of elements. To 
         if (word.length() > threshold) {
             longWords.add(word);
         }
-    }
+     }
     return longWords;
 }
 ```
