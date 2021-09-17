@@ -7,7 +7,7 @@ categories: java
 
 WORK IN PROGRESS: 
 
-With the recent anouncement of the release of Java 17, which will be a LTS version (long term support), I found it fitting to try to show how much Java has evolved as a language over the past few years. <br />
+With the recent anouncement of the release of Java 17 (check out [dev.java](https://dev.java/)), which will be a LTS version (long term support), I found it fitting to try to show how much Java has evolved as a language over the past few years. <br />
 
 A lot of people seem to consider Java as being a "dinosaur" language, used mainly in big tech companies.
 Alternatives languages to Java targetting the JVM such as Kotlin, Scala or Clojure are attractive to developers and companies alike due to their additional features or programming paradigm they bring to the table. <br /> 
