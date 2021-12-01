@@ -5,7 +5,7 @@ date:   2021-12-01 16:10:47 +0200
 categories: kotlin
 ---
 
-# Introduction 
+## Introduction 
 It's this time of the year when it gets dark and cold outside (at least in Berlin), people start getting into the Christmas spirit by going to Christmas Markets and drinking Gluhwein (while it's still allowed). It's also the time when you spend more time indoors "cosying" up with a hot beverage. 
 
 More specifically, if you are interested in coding, today marks the first day of [advent of code](https://adventofcode.com/). The idea is fairly straightforward: every day a programming puzzle gets released, in order to unlock the puzzle for each day you need to solve the previous day. 
@@ -26,12 +26,13 @@ My plan is to write short blog posts for the days I will have time to solve in w
 
 Let's get started with Day 1!
 
-# Day 1
+## Day 1
 FYI: in the last years, the puzzle increase in difficulty throughout the days — the first few days can be considered as a "ramp up".
-## Puzzle — Part 1
+### Puzzle — Part 1
 The puzzle description can be found [here](https://adventofcode.com/2021/day/1) — I would summarize it to the following: 
 > Given a list of integers, return the number of times an element in the list is bigger than the previous element. 
-### Solution
+
+#### Solution
 Here is my proposed solution, I will walk through it afterwards: 
 ```kotlin
 fun countIncrease(input: List<Int>): Int {
@@ -56,11 +57,11 @@ Finally, once the loop is completed, I return the `count` variable.
 
 Here the interesting part is the `.drop` method on the `List` API, which concisely returns a new 'read only' list instance without the first element.
 
-## Puzzle — Part 2
+### Puzzle — Part 2
 The second part of the puzzle is an extension of the part 1, it can actually be considered the exact same problem, with an additional data transformation before the calculation. 
 Indeed, we need to group each triple elements and then apply our algorithm on the new transformed list. 
 For example, if the input list is `[4, 1, 4, 1, 7]` the transformed list is `[9, 6, 12]` (computed by `4 + 1 + 4 = 9`, `1 + 4 + 1 = 6` and `4 + 1 + 7 = 12` respectively). Once we have the transformed list, we only need to pass it to our function from part 1. 
-### Solution
+#### Solution
 Here is my proposed solution for the data transformation:  
 ```kotlin
 fun buildTriples(input: List<Int>): List<Triple> {
@@ -92,7 +93,7 @@ countIncrease(buildTriples(input).map { it.sum() })
 ```
 We are also leveraging an [extension function](https://kotlinlang.org/docs/extensions.html) to compute the sum of the `Triple`.
 
-## Source code
-You can find the source code for my solution [here](https://github.com/Eric-Lloyd/advent-of-code-kotlin/tree/main/src/day1)
+### Source code
+You can find the source code for my solution [here](https://github.com/Eric-Lloyd/advent-of-code-kotlin/tree/main/src/day1).
 
 Thank you very much for reading! 
