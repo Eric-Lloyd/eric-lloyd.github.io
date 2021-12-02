@@ -9,8 +9,8 @@ categories: kotlin
 Alright, today is day 2 of [advent of code](https://adventofcode.com/2021/), we have a challenge slightly more difficult than Day 1 but still very much accessible and fun (not overwhelming yet :grimacing:). 
 
 ### Looking back on Day 1
-Before we jump into Day 2's puzzle and my proposed solution in Kotlin, I would like to share something I learned about yesterday:
-In Kotlin `List` API there is a [windowed](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/windowed.html) method which allows iterating over a list with "sliding windows". 
+Before we jump into day 2's puzzle and my proposed solution in Kotlin, I would like to share something I learned about yesterday:
+in Kotlin `List` API there is a [windowed](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/windowed.html) method which allows iterating over a list with "sliding windows". 
 This method takes a `size` parameter which is the size of the "sliding window". 
 
 To give a concrete example, consider the following code:
@@ -62,13 +62,13 @@ fun depth(commands: List<Command>) =
         .map { if (it.type == Type.DOWN) it.amount else -it.amount }
         .sum()
 ```
-These follow the pattern _filter-map-reduce_. It is the clean functional way of transforming list into an aggregate. 
+These follow the pattern _filter-map-reduce_. It is the clean functional way of transforming a list into an aggregate. 
 * For the `horizontalPosition` we simply need to sum the commands of type `FORWARD` (while ignoring other types of commands).
 * For the `depth`, we need to add the amount for `DOWN` commands and subtract it for `UP` commands (while ignoring `FORWARD` commands).
 
 #### Part 2
 For this part, there is an additional aggregate called `aim` which we need to compute `depth`.
-In other words, the logic for calculating `depth` change, so we need to ditch our previous function. 
+In other words, the logic for calculating `depth` changes, so we need to ditch our previous function. 
 This time, we have to compute the aggregates together as they depend on each other (`depth` depends on `aim`). 
 To do this, we can leverage the `fold` [method](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/fold.html) on the `List` API which is a generalized way of doing a `reduce` as instead of using the first element of the list as a starting point for the calculation, we can specify our own initial element (and its type).
 
