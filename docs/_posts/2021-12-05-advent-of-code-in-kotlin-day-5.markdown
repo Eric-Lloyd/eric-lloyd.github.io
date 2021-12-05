@@ -25,13 +25,13 @@ You can find the description for this puzzle [here](https://adventofcode.com/202
 
 ### Solution
 In my opinion, today's puzzle could be broken down into 3 challenges:
-1. modeling the input data
+1. modelling the input data
 2. converting lines to a list of points
 3. counting the points to find overlapping ones
 
 I will share how I approached each of these challenges by sharing parts of my solution.
 
-#### Modeling the input
+#### Modelling the input
 So here we need to convert each line from the input file to two points on a 2D plane.
 The line between two points can be called a vector. I chose to simply call it `Line`. 
 Here is how I modelled my data:
@@ -145,7 +145,6 @@ Let me break it down for you:
 * `groupBy` allows transforming the `List<Point>` to a `Map<Point, List<Point>>` with the list being a list of duplicates of the same point (one for each time when this point is on a given line).
 * `count` allows counting how many times a given predicate is `true` for the key/value pair. Here the predicate is `{ it.value.size >= threshold }` which checks whether the number of duplicates for this point is bigger than the given `threshold`.
 
-##### Filtering which points to count
 You may have noticed how I did not distinguish my solution between _Part 1_ and _Part 2_ so far, this is because the only difference is which points to count. 
 For both parts you need to add a filter based on the type of line (whether it is `horizontal`, `vertical` or `diagonal`).
 Here is how I did it:
@@ -158,6 +157,7 @@ val count2 = count(lines) { line -> line.isVertical || line.isHorizontal || line
 ```
 Caveat: for today it seems all lines in the input are one of `horizontal`, `vertical` or `diagonal` (there are no lines at 60 degrees for example).
 This means if a line is not `horizontal` nor `vertical` you could consider it `diagonal` without explicit check.
+
 ### Kotlin Concepts 
 Alright, I hope you liked my proposed solution and learned a few things along the way.
 The key Kotlin concepts that we have covered are:
