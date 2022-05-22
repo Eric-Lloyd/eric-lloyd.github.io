@@ -201,4 +201,6 @@ for position, letter in enumerate(name):
 assert ['J', 'n'] == common_letters_in_place
 ```
 
+### Code
+All the code from this blog post can be found in this [replit](https://replit.com/@19Eric/Python-Basics-Looping-over-common-Data-Structures?v=1).
 
