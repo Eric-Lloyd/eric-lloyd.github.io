@@ -36,8 +36,8 @@ We will explain more about the `return` statement later.
 In _Python_, you can use many _built-in_ functions, meaning functions that come with the language such as `print`, `len` (you can find more details about _built-in_ functions [here](https://docs.python.org/3/library/functions.html)).
 But, more importantly, you can define your own functions in your programs.
 #### How to define a function
-To **define** your own function, you need to use the keyword `def` followed by the name you give it, parenthesis and a semi colon:
-Then, all the code in your function should be indented inside the function **block**.
+To **define** your own function, you need to use the keyword `def` followed by the name you give it, parenthesis with optionally parameters and a semicolon.
+Then, all the code in your function should be **indented** inside the function **block**.
 #### Defining a function with no parameters
 ```python
 def my_first_function():
@@ -85,7 +85,8 @@ my_first_function()
 my_first_function()
 ```
 To call the greetings functions, which take parameters there are mutiple ways:
-1. With inline variables
+ 
+#### With inline variables
 ```python
 greeting("Jane")
 polite_greeting("Mrs", "Jackson")
@@ -96,7 +97,7 @@ When the function is executed, we have `name="Jane"` inside the function block.
 We pass the value `"Mrs"` and `"Jackson"` directly to the `polite_greeting` function.
 When the function is executed, we have `title="Mrs"` `surnname="Jackson"` inside the function block.
 
-2. With existing variable(s)
+#### With existing variable(s)
 ```python
 first_name = "John"
 greeting(first_name)
@@ -112,7 +113,7 @@ When the function is executed, we have `title=title` `surnname=surname` inside t
 
 > Here it is important to note that the variable we pass the function (called argument) does not have to have the same name as the function parameter.
 
-3. With key/value arguments
+#### With key/value arguments
 This method is more verbose, but it is in my opinion is the more intuitive one when learning:
 ```python
 first_name = "John"
