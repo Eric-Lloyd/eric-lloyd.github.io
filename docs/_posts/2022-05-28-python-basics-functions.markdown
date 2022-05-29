@@ -56,7 +56,7 @@ def polite_greeting(title, surname):
 ```
 Here the name of the first function is `greeting`, it takes one parameter called `name` (inside the parenthesis).
 
-The name of the second function is `polite_greeting`, it takes two parameter called `title` and `surname` (inside the parenthesis).
+The name of the second function is `polite_greeting`, it takes two parameters called `title` and `surname` (inside the parenthesis).
 
 Again, they both call the `print` _built-in_ function, this time with a [f-string](https://realpython.com/python-f-strings/).
 
