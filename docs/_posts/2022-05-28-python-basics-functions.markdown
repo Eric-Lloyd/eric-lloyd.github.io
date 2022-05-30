@@ -8,18 +8,20 @@ categories: python
 
 Functions are the building blocks of programming.
 
-A function is block of code to execute a task/action or data transformation, that can be called multiple times, with different inputs.
+A function is block of code which is used to execute a task/action or data transformation.
+It can be called multiple times, with different inputs.
 
 We will decipher this definition in the following blog post.
-I will explain how to **define** a function in _Python_ and how to **call** it multiple times with different inputs. 
-I will also give common use case for using a function to make your code clearer, more organised and more readable.
+I will explain how to **define** a function in _Python_ and how it can be **called** multiple times with different inputs. 
+Using a function can make your code clearer, more organised and more readable. I will give a few use cases to illustrate this.
 
 ### Print function
-Usually the first thing you learn in _Python_ is to display the sentence "Hello World!" to the terminal output.
+Usually the first thing you learn in _Python_ (or any programming language) is to display the sentence "Hello World!" to the terminal output.
+This is how the code would look like:
 ```python
 print("Hello World!")
 ```
-What you are actually doing is calling the _built-in_ `print` function with the a string argument `"Hello World!"`.
+Here what we are actually doing is calling the _built-in_ `print` function with a string as argument with the value `"Hello World!"`.
 
 You could simplify and imagine the `print` function to be defined the following way:
 ```python
@@ -29,16 +31,35 @@ def print(value):
     # ...
     return None
 ```
-It takes a `value` as a parameter, does an **action** with it to display it to the terminal and returns `None`.
-We will explain more about the `return` statement later.
+This imaginary `print` function has a **parameter** called `value`. It then displays the `value` to the terminal and returns `None`.
+We will explain in more details what is a **parameter** a and what is a `return` statement later.
+
+The `print` function is very valuable because you do not need to know how the value you give it is printed to the terminal, you only care about the result.
+It is used a lot of times throughout programs.
+The name `print` clearly states the intent of the function, which is to display or print to the terminal output.
+
+Similarly, when we build our own functions, we will try to:
+* hide implementation details
+* give them a meaningful name
+* make them as reusable as possible
+
+
 
 ### Building your own functions
 In _Python_, you can use many _built-in_ functions, meaning functions that come with the language such as `print`, `len` (you can find more details about _built-in_ functions [here](https://docs.python.org/3/library/functions.html)).
-But, more importantly, you can define your own functions in your programs.
+More importantly, you can **define** your own functions in your programs, this is what we will focus on from now on.
 #### How to define a function
-To **define** your own function, you need to use the keyword `def` followed by the name you give it, parenthesis with optionally parameters and a semicolon.
-Then, all the code in your function should be **indented** inside the function **block**.
+To **define** your own function, you need to:
+* start with the keyword `def`
+* after that you need **parenthesis** with, optionally, the parameters of your function
+* then you need a **semicollon** to start your function block
+* finally the block or content of the function (what it does)
+
+> The first line when you define a function is called the **function signature**, it has the keyword (`def`) the name of the function and optionally some parameters.
+
+Remember that all the code in your function should be **indented** inside the function **block**.
 #### Defining a function with no parameters
+Here is an example of what is described above for a function with no parameters:
 ```python
 def my_first_function():
     print("Hello inside a function!")
@@ -47,6 +68,7 @@ Here the name of the function is `my_first_function`, it takes no parameters: th
 It then calls the `print` _built-in_ function.
 
 #### Defining a function with parameters
+Here are two examples of functions with parameters:
 ```python
 def greeting(name):
     print(f"Hello {name}, from inside a function!")
@@ -60,17 +82,12 @@ The name of the second function is `polite_greeting`, it takes two parameters ca
 
 Again, they both call the `print` _built-in_ function, this time with a [f-string](https://realpython.com/python-f-strings/).
 
-> The first line when you define a function is called the **function signature**, it has the keyword (`def`) the name of the function and optionally some parameters.
-
-
-
-Once you have **defined** your functions, if you run your program nothing happens.
-
-This is expected, for your functions to be executed you need to `call` them.
+Once you have **defined** your functions, if you try to run your program, you will see that nothing happens.
+This is expected: for your functions to be executed you will need to `call` them.
 
 ### How to call a function
 Calling a function is equivalent to executing the code inside your function.
-It will be called with the arguments (or values) that you pass to it.
+It will be called with the **arguments** (or values) that you pass to it.
 
 To call your first function, you simply do the following:
 ```python
@@ -84,20 +101,24 @@ my_first_function()
 my_first_function()
 my_first_function()
 ```
-To call the greetings functions, which take parameters there are mutiple ways:
+
+To call the greetings functions, which take parameters there are multiple ways.
+I will illustrate below 3 different ways:
  
-#### With inline variables
+#### 1. With inline variables
+In this method, we directly pass inline values to the function:
 ```python
 greeting("Jane")
 polite_greeting("Mrs", "Jackson")
 ```
-We pass the value `"Jane"` directly to the `greeting` function.
+* We pass the value `"Jane"` directly to the `greeting` function.
 When the function is executed, we have `name="Jane"` inside the function block.
 
-We pass the value `"Mrs"` and `"Jackson"` directly to the `polite_greeting` function.
+* We pass the value `"Mrs"` and `"Jackson"` directly to the `polite_greeting` function.
 When the function is executed, we have `title="Mrs"` `surnname="Jackson"` inside the function block.
 
-#### With existing variable(s)
+#### 2. With existing variable(s)
+In this method, we pass existing variables to the function:
 ```python
 first_name = "John"
 greeting(first_name)
@@ -105,15 +126,16 @@ title = "Dr"
 surname = "Jackson"
 polite_greeting(title, surname)
 ```
-We pass the variable `first_name` to the `greeting` function.
+* We pass the variable `first_name` to the `greeting` function.
 When the function is executed, we have `name=first_name` inside the function block (which is equivalent to `name="John"`).
 
-We pass the variables `title` and `surname` to the `polite_greeting` function.
+* We pass the variables `title` and `surname` to the `polite_greeting` function.
 When the function is executed, we have `title=title` `surnname=surname` inside the function block (which is equivalent to `title="Dr"` `surnname="Jackson"`).
 
 > Here it is important to note that the variable we pass the function (called argument) does not have to have the same name as the function parameter.
 
-#### With key/value arguments
+#### 3. With keyword arguments
+In this method, we can pass either inline values or variable using the parameter name explicitly followed by an equal sign:
 This method is more verbose, but it is in my opinion is the more intuitive one when learning:
 ```python
 first_name = "John"
@@ -124,13 +146,13 @@ polite_greeting(title=title, surname=surname)
 ``` 
 We are explicitly saying that we want the variable inside our `greeting` function block name to be `first_name` when we call it.
 
-This can also be used with inline values:
+Here is an example with inline values:
 ```python
 polite_greeting(title="Mrs", surname="Jackson")
 ``` 
 
 ### Function return statement in _Python_
-For your functions to be useful in your program, you usually want them to execute some kind of data transformation and return a result.
+For your functions to be useful in your program, it is common for them to execute some kind of data transformation and return a result.
 To do this in _Python_ (and most programming languages), you can use the `return` statement.
 Here is a very simple example: 
 ```python
@@ -139,7 +161,7 @@ def add(a, b):
     return result
 ``` 
 The above function takes 2 parameters, `a` and `b`, it computes the sum of these variables and saves it into a `result` variable.
-It then **returns** this result variable.
+It then **returns** this `result` variable.
 When you call it, you can assign its return value to a variable like so:
 ```python
 c = add(5, 5)
@@ -162,7 +184,7 @@ It can be called directly with values (example `c` and `d`) or with existing var
 > In _Python_, a function always returns a value. If you do not explicitly write a return statement in your function definition, _Python_ will add an implicit `return None`.
 In other words if a function has not explicit return statement, it will return `None`.
 
-You can check the above by assigning a variable the execution of a function with no implicit return:
+You can check this by assigning the execution of a function with no implicit return to a variable and printing its value:
 ```python
 def does_nothing():
     pass
@@ -172,7 +194,7 @@ nothing = does_nothing()
 ``` 
 
 ### Use case 1: average of a list
-Imagine we have a lot of lists of grades for which we want to compute the average.
+Imagine we have a list grades for which we want to compute the average.
 Here is the code I would use without a function. 
 ```python
 grades_1 = [12, 15, 10, 17]
@@ -184,9 +206,9 @@ avg = round(sum / len(grades_1), 2)
 ```
 We are summing all the elements in the list, and then dividing the sum by the length of the list, rounding the result to maximum 2 decimal.
 
-This works, but what happens if I want to do it again for a different list of grades, for example `grades_2 = [18, 15, 11, 13]`.
-Without functions, I would have to copy and paste my code above and tweak it for it to work with the `grades_2` variable.
-However, if I create a function called `average`, I can reuse on the 2 lists. Let's do it:
+This works, but it is not reusable. If I want to do it again for a different list of grades, for example `grades_2 = [18, 15, 11, 13]`, 
+I would have to copy and paste my code above and tweak it for it to work with the `grades_2` variable.
+However, if I create a function called `average`, I can reuse it easily on the 2 lists. Let's do it:
 ```python
 def average(grades):
     sum  = 0
