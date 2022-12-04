@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "My Day 3 solution explained by an AI tool"
+title:  "AOC: My Day 3 solution explained by an AI tool"
 date:   2022-12-04 22:10:47 +0200
 categories: python
 ---
