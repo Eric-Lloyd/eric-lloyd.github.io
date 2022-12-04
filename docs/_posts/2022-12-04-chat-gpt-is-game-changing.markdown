@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "ChatGPT is Game Changing! – heapq explained by an AI tool"
-date:   2022-08-20 16:10:47 +0200
+date:   2022-12-04 16:10:47 +0200
 categories: python
 ---
 

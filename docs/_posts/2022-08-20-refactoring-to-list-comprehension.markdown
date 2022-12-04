@@ -1,155 +1,52 @@
 ---
 layout: post
-title:  "Refactoring code to Java 8 Stream API"
-date:   2021-05-13 16:10:47 +0200
-categories: java
+title:  "Python: Refactoring code with list comprehensions"
+date:   2022-08-20 16:10:47 +0200
+categories: python
 ---
 
-You may be wondering why a blog post in 2021 is mentioning Java 8, as it came out over 7 years ago. 
-The reason is that I have come across a lot of Java codebase which are indeed using Java 8 or  a later version, however they are not always leveraging the Java 8 API.
-I often find code blocks which could be _refactored_. What I mean here by _refactoring_ is that these code blocks could leverage the Java 8 APIs to become more readable, more concise (i.e. less verbose) and also less outdated.
+When reading _Python_ code, I often find blocks which could be _refactored_.
+What I mean here by _refactoring_ is that these code blocks could leverage list comprehensions to become more readable, more concise (i.e. less verbose) and also less outdated.
 
 I have found that doing this kind of very small refactoring is a good way to get familiar with an unknown codebase — which you can do while reading through the code.
 Always make sure that there is a good suite of tests for the code you are refactoring, and to regularly run them every time you make changes.
 
-In this blog post, I would like to share some common patterns that I have come across, and how they can be changed — focusing on the usage of Java 8 **Stream** API.
+In this blog post, I would like to share some common patterns that I have come across, and how they can be changed — focusing on the usage of Python **list comprehensions**.
 
 # Examples
 ## Filtering
-One very common action in programming is to filter a collection of elements. To do this prior to Java 8, you would do the following:
-```java
-List<String> longWords(final List<String> words, final int threshold) {
-    List<String> longWords = new ArrayList<>();
-    for (String word : words) {
-        if (word.length() > threshold) {
-            longWords.add(word);
-        }
-    }
-    return longWords;
-}
+One very common action in programming is to filter a collection of elements. To do this in Python, you could do the following:
+```python
+def long_words(words: List[str], threshold: int) -> List[str]:
+    long_words = []
+    for word in words:
+        if len(word) > threshold:
+            long_words.append(word)
+    
+    return long_words
 ```
-The above method could be replaced with the following:
-```java 
-List<String> longWords(final List<String> words, final int threshold) {
-    return words.stream()
-            .filter(word -> word.length() > threshold)
-            .collect(toList());
-}
+The above method could be replaced with the following one liner using list comprehension:
+```python 
+def long_words(words: List[str], threshold: int) -> List[str]:
+    return [word for word in words if len(word) > threshold]
 ```
 This is more concise, and more readable.
-
-## Counting
-Instead of filtering, you may simply want to count the long words.
-Prior to Java 8 you could do:
-```java
-long longWordsCount(final List<String> words, final int threshold) {
-   long count = 0L;
-    for (String word : words) {
-        if (word.length() > threshold) {
-            count++;
-        }
-    }
-    return count;
-}
-```
-
-With Java 8 Stream API you can do:
-```java
-long longWordsCount(final List<String> words, final int threshold) {
-    return words.stream()
-            .filter(word -> word.length() > threshold)
-            .count();
-}
-```
-
-## Grouping
-Another common action is to group elements from a list, based on a specific condition or predicate. 
-For example, you may want to group words by length. To do this prior to Java 8, you would do the following:
-```java
-Map<Integer, List<String>> groupByWordLength(final List<String> words) {
-    Map<Integer, List<String>> groups = new HashMap<>();
-    for (String word : words) {
-        int length = word.length();
-        if (groups.containsKey(length)) {
-            List<String> group = groups.get(length);
-            group.add(word);
-        } else {
-            List<String> group = new ArrayList<>();
-            group.add(word);
-            groups.put(length, group);
-        }
-    }
-    return groups;
-}
-```
-This is starting to be already quite verbose for such a common task. Thankfully it becomes a lot simpler leveraging Java 8 Stream:
-```java
-Map<Integer, List<String>> groupByWordLength(final List<String> words) {
-    return words.stream()
-            .collect(groupingBy(word -> word.length()));
-}
-```
-This _one liner_ is also a lot more readable.
-
-## Partitioning 
-One slightly less common but still frequent action is to partition a list, based on a specific condition or predicate. Continuing with our "words" example, we can partition words based on their lengths. To do this prior to Java 8, you would do the following:
-```java
-
-List<List<String>> partitionByWordLength(final List<String> words, final int threshold) {
-    List<String> shortWords = new ArrayList<>();
-    List<String> longWords = new ArrayList<>();
-    for (String word : words) {
-        if (word.length() > threshold) {
-            longWords.add(word);
-        } else {
-            shortWords.add(word);
-        }
-    }
-    return Arrays.asList(shortWords, longWords);
-}
-```
-With Java 8 Stream API, you can refactor the method to be:
-```java
-
-List<List<String>> partitionByWordLength(final List<String> words, final int threshold) {
-    Collection<List<String>> partition = words.stream()
-        .collect(partitioningBy(word -> word.length() > threshold))
-        .values();
-    return new ArrayList<>(partition);
-}
-```
-Here we need to convert the `Collection` to an `ArrayList` because the type returned by `partitioningBy` collector is a `Map`.
-We could have simply returned the `Map` of `List`s which contains two keys, `true` and `false`.
 
 
 ## Transforming
 Transformation are also very common, a _transformation_ is when you want to apply a function to each element in a list which converts it to something else. 
 There are a lot of method which use the following patterns:
-```java
-static List<String> fooTransform(final List<String> words) {
-    List<String> fooStuff = new ArrayList<>();
-    for (String word : words) {
-        String foo1 = word.repeat(3);
-        String foo2 = foo1.stripTrailing();
-        String foo3 = foo2.toUpperCase();
-        fooStuff.add(foo3);
-    }
-    return fooStuff;
-}
+```python
+def upper(words: List[str]) -> List[str]:
+    upper_words = []
+    for word in words:
+        upper_words.append(word.upper())
+    return upper_words
 ```
-Using streams, you can do the following:
-```java
-List<String> fooTransform(final List<String> words) {
-    return words.stream()
-        .map(word -> fooThing(word))
-        .collect(toList());
-}
-        
-private String fooThing(final String word) {
-    String foo1 = word.repeat(3);
-    String foo2 = foo1.stripTrailing();
-    return foo2.toUpperCase();
-}
+Using list comprehensions, you can do the following in one line:
+```python
+def upper_lc(words: List[str]) -> List[str]:
+    return [word.upper() for word in words]
 ```
 Extracting the inner block computation of the _for loop_ in a helper method allows to then have a clean and readable transformation with `map`.
 
