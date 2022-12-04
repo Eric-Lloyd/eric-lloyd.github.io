@@ -15,7 +15,7 @@ This solution solves the challenge for Advent of Code 2022, Day 3: Rucksack Reor
 2. Group the rucksacks into sets of three. For each set, find the common letter between the three rucksacks. Calculate the sum of the priorities for these letters.
 
 ### Solution
-Here is my solution:
+Here is the code for my solution:
 ```python
 from functools import reduce
 from typing import List, Set

@@ -41,7 +41,7 @@ For the example above, the player would get the following scores:
 Total score = 4 + 1 + 7 = 12
 
 ### Solution
-To solve this challenge, we can use a dictionary to map the encrypted data to the corresponding scores. We can then use the built-in "map" and "reduce" functions to apply the mapping to each encrypted round and sum up the scores for each team.
+To solve this challenge, we can use a dictionary to map the encrypted data to the corresponding scores. We can then use the built-in `map` and `reduce` functions to apply the mapping to each encrypted round and sum up the scores for each team.
 
 Here is the code for my solution:
 ```python
