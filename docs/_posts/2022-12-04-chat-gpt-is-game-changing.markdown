@@ -53,7 +53,7 @@ if len(pq) == n:
 else:
   heapq.heappush(pq, new_element)
 ```
-In this code, `n` is the maximum size of the queue, and "new_element" is the element we want to add to the queue.
+In this code, `n` is the maximum size of the queue, and `new_element` is the element we want to add to the queue.
 
 Using the "heapq" library, we can easily create a priority queue that holds the n maximum elements from a list of integers. The `heapify` and `heappush` methods allow us to initialize and add elements to the queue, while the `heappop` and `heappushpop` methods allow us to retrieve the maximum element and add new elements while maintaining the maximum size of the queue. With these tools, we can easily implement a priority queue in our Python programs.
 
