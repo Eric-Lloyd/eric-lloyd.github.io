@@ -59,7 +59,8 @@ Using the "heapq" library, we can easily create a priority queue that holds the 
 
 ### Conclusion
 In my opinion this is **huge**, this will change a lot of things in our world and how we live and work. 
+Just to write this blog posts, I made absolutely no efforts..
 In the short term, this could replace all search engines. 
-In the long term, I'll let you imagine.
+In the long term, who knows? I'll let you imagine.
 
 If you want to try it while it's available: https://chat.openai.com/chat. 
