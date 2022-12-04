@@ -22,7 +22,7 @@ In this blog post, we asked ChatGPT to write an introduction to the "heapq" libr
 We hope you enjoy this blog post and find it helpful. Thank you for reading!
 
 ### heapq library
-> Write a blog post explaning how to use the python "heapq" library as a priority queue holding the n maximum elements from a list of integers. Make sure to explain how the priority removes elements added after we have reached the max size. Make sure to include code examples.
+> Write a blog post explaining how to use the python "heapq" library as a priority queue holding the n maximum elements from a list of integers. Make sure to explain how the priority removes elements added after we have reached the max size. Make sure to include code examples.
 
 The python "heapq" library is a great tool for implementing a priority queue. It allows us to easily store and retrieve elements based on their priority. In this blog post, we will explore how to use "heapq" to create a priority queue that holds the n maximum elements from a list of integers.
 
