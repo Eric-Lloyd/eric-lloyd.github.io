@@ -63,4 +63,4 @@ Just to write this blog posts, I made absolutely no efforts..
 In the short term, this could replace all search engines. 
 In the long term, who knows? I'll let you imagine.
 
-If you want to try it while it's available [here](https://chat.openai.com/chat).
+If you want to try it while it's available, click [here](https://chat.openai.com/chat).
